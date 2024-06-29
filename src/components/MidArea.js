@@ -15,6 +15,10 @@ export default function MidArea({
     const newblockId = `block-${blocks.length + 1}`;
     setBlocks([...blocks, { id: newblockId, actions: [] }]);
   };
+
+  const deleteblock = (blockId) => {
+    setBlocks(l => l.filter(item => item.id !== blockId))
+  }
   const handleDelete = (blockId, index) => {
     const block = blocks.find((c) => c.id === blockId);
 
@@ -40,7 +44,7 @@ export default function MidArea({
   };
 
   function getStream(blockId) {
-    console.log("blockId", `#${blockId}`);
+    console.log("blockId", `#${blockId}`, blocks);
 
     newValues[blockId] = [];
 
@@ -107,6 +111,7 @@ export default function MidArea({
           droppableId={block.id}
           type="sidearea"
         >
+
           {(provided) => (
             <ul
               id={block.id}
@@ -125,6 +130,19 @@ export default function MidArea({
                 flexDirection: "column",
               }}
             >
+              <span
+                style={{
+                  color: "red",
+                  cursor: "pointer",
+                  display: "flex",
+                  marginLeft: "auto",
+                  alignItems: "center",
+                  marginBottom: "10px"
+                }}
+                onClick={() => deleteblock(block.id)}
+              >
+                Delete Block
+              </span>
               <button
                 style={{
                   backgroundColor: "green",
@@ -137,7 +155,7 @@ export default function MidArea({
                 }}
                 onClick={() => runClick(block.id)}
               >
-                Run
+                Run Block
               </button>
               {block.actions.map((item, index) => (
                 <Draggable key={item} draggableId={item} index={index}>

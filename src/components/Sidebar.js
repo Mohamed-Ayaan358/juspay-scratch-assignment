@@ -25,26 +25,26 @@ export default function Sidebar() {
         {" "}
         {"Sidebar"}{" "}
       </div>
-      <Droppable droppableId="block-1" type="sidearea">
-        {(provided) => (
+      <Droppable droppableId="block-1" type="actionValue">
+        {(value) => (
           <ul
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            className="sidearea my-3"
+            {...value.droppableProps}
+            ref={value.innerRef}
+            className="actionValue my-3"
           >
             {actionList.map((item, index) => {
               return (
                 <Draggable
-                  key={`${item}-sideArea`}
-                  draggableId={`${item}-sideArea`}
+                  key={`${item}-actionValue`}
+                  draggableId={`${item}-actionValue`}
                   index={index}
                   type="block-1"
                 >
-                  {(provided) => (
+                  {(value) => (
                     <ul
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
+                      ref={value.innerRef}
+                      {...value.draggableProps}
+                      {...value.dragHandleProps}
                     >
                       {componentSelection(item)}
                     </ul>
@@ -52,7 +52,7 @@ export default function Sidebar() {
                 </Draggable>
               );
             })}
-            {provided.placeholder}
+            {value.placeholder}
           </ul>
         )}
       </Droppable>
