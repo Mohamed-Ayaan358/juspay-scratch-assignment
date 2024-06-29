@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import Sidebar from "./components/Sidebar";
@@ -6,48 +7,54 @@ import PreviewArea from "./components/PreviewArea";
 
 
 export default function App() {
-  const [streams, setStreams] = useState([])
+  const [stream, setStreams] = useState([]);
   const [blocks, setBlocks] = useState([
     {
       id: "block-1",
-      actions: []
-    }
-  ])
+      actions: [],
+    },
+  ]);
 
-  const DragEvent = (temp) => {
-    if (!temp.destination) return;
 
-    const draggableActionId = temp.draggableId.split("-")[0];
-    const destBlockId = temp.destination.droppableId;
+  const dragEvent = (actionEvent) => {
+    if (!actionEvent.destination) return;
 
-    const updatedBlocks = blocks.map((block) => {
-      if (block.id === destBlockId) {
+    const destinationblockId = actionEvent.destination.droppableId;
+    const draggableId = actionEvent.draggableId.split("-")[0];
+
+    const updatedblocks = blocks.map((block) => {
+      if (block.id === destinationblockId) {
         return {
           ...block,
           actions: [
             ...block.actions,
-            `${draggableActionId}-${block.items.length}`,
+            `${draggableId}-${block.actions.length}`,
           ],
         };
       }
       return block;
-    })
-    setBlocks(updatedBlocks)
-  }
+    });
+    setBlocks(updatedblocks);
+  };
+
 
   return (
     <div className="bg-blue-100 pt-6 font-sans">
       <div className="h-screen overflow-hidden flex flex-row  ">
         <div className="flex-1 h-screen overflow-hidden flex flex-row bg-white border-t border-r border-gray-200 rounded-tr-xl mr-2">
-
-          <DragDropContext onDragEnd={DragEvent}>
-            <Sidebar /> <MidArea />
+          <DragDropContext onDragEnd={dragEvent}>
+            <Sidebar />
+            <MidArea
+              blocks={blocks}
+              setBlocks={setBlocks}
+              setStreams={setStreams}
+            />
           </DragDropContext>
         </div>
         <div className="w-1/3 h-screen overflow-hidden flex flex-row bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
           <PreviewArea />
         </div>
       </div>
-    </div >
+    </div>
   );
 }
