@@ -29,13 +29,9 @@ export default function MidArea({
     }
   };
 
-  const [currentblockId, setCurrentblockId] = useState(null);
-
   const [newValues, setNewValues] = useState({});
 
-
   const indivClick = (blockId, action) => {
-    // setStreams()
     if (!newValues[blockId]) {
       newValues[blockId] = [];
     }
@@ -88,7 +84,6 @@ export default function MidArea({
 
   }
   const runClick = (blockId) => {
-    setCurrentblockId(blockId);
 
     if (!newValues[blockId]) {
       newValues[blockId] = [];
