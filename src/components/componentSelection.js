@@ -3,6 +3,7 @@ import MoveX from "./Options/MoveX";
 import MoveY from "./Options/MoveY";
 import Goto from "./Options/Goto";
 import GotoR from "./Options/GotoRandom";
+import RotateDegree from "./Options/rotate";
 import ChangeSize from "./Options/ChangeSize";
 import Repeat from "./Options/Repeat";
 import SetSize from "./Options/SetSize";
@@ -11,6 +12,8 @@ import TurnAnti from "./Options/TurnAnti";
 import TurnClock from "./Options/TurnClock";
 import Wait from "./Options/Wait";
 import Flag from "./Options/Flag";
+import ChangeColor from "./Options/changecolor";
+import ChangeBackgroundColor from "./Options/changeBackground";
 
 export const componentSelection = (key, id) => {
   switch (key.toUpperCase()) {
@@ -22,6 +25,8 @@ export const componentSelection = (key, id) => {
       return <Goto value={id} />;
     case "GOTORANDOM":
       return < GotoR value={id} />;
+    case "ROTATEDEGREE":
+      return <RotateDegree value={id} />;
     case "WAIT":
       return <Wait value={id} />;
     case "TURNCLOCK":
@@ -38,5 +43,10 @@ export const componentSelection = (key, id) => {
       return <Repeat value={id} />;
     case "FLAG":
       return <Flag value={id} />;
+    case "CHANGECOLOR":
+      return <ChangeColor value={id} />
+    case "CHANGEBACKGROUNDCOLOR":
+      return <ChangeBackgroundColor value={id} />
   }
+
 };

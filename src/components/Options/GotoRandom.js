@@ -10,7 +10,7 @@ const GotoR = (value) => {
 
   useEffect(() => {
     const randomNumber = Math.floor(Math.random() * 301);
-    const randomNumber1 = Math.floor(Math.random() * 451);
+    const randomNumber1 = Math.floor(Math.random() * 870);
     setStepsX(randomNumber)
     setStepsY(randomNumber1)
 

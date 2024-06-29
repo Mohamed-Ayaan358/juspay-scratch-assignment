@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 export default function CatSprite({ stream, modifyHistory }) {
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState("");
 
 
   const catRef = useRef(null);
@@ -38,36 +39,19 @@ export default function CatSprite({ stream, modifyHistory }) {
           element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
         } else if (key.key.startsWith("gotoX")) {
           const targetX = key.value;
-
-          // const targetY = key.value;
-
           element.style.left = `${targetX}px`;
-          // element.style.top = `${targetY}px`;
-
           leftRef.current = targetX;
-          // topRef.current = targetY;
         }
         else if (key.key.startsWith("gotoXRandom")) {
           const targetX = key.value;
-
-          // const targetY = key.value;
-
           element.style.left = `${targetX}px`;
-          // element.style.top = `${targetY}px`;
-
           leftRef.current = targetX;
-          // topRef.current = targetY;
         }
         else if (key.key.startsWith("gotoYRandom")) {
           const targetY = key.value;
-
-          // const targetY = key.value;
-
           element.style.left = `${targetY}px`;
-          // element.style.top = `${targetY}px`;
 
           leftRef.current = targetY;
-          // topRef.current = targetY;
         }
 
         else if (key.key.startsWith("gotoY")) {
@@ -78,14 +62,13 @@ export default function CatSprite({ stream, modifyHistory }) {
         }
         else if (key.key.startsWith("gotoX")) {
           const targetX = key.value;
-
-          // const targetY = key.value;
-
           element.style.left = `${targetX}px`;
-          // element.style.top = `${targetY}px`;
-
           leftRef.current = targetX;
-          // topRef.current = targetY;
+        }
+        else if (key.key.startsWith("rotatedegree")) {
+          const angle = key.value;
+          const normalizedAngle = ((angle % 360) + 360) % 360;
+          element.style.transform = `rotate(${normalizedAngle}deg) scale(${scaleRef.current})`;
         }
         else if (key.key.startsWith("changesize")) {
           scaleRef.current += key.value / 100;
@@ -101,8 +84,19 @@ export default function CatSprite({ stream, modifyHistory }) {
           setMessage(message);
           setShowMessage(true);
 
-          await new Promise((resolve) => setTimeout(resolve, 2000));
+          await new Promise((resolve) => setTimeout(resolve, 5000));
           setShowMessage(false);
+        } else if (key.key.startsWith("changeColorEffect")) {
+          const currentColor = element.style.filter || "none";
+          const currentEffect = parseInt(currentColor.replace(/\D/g, ""), 10) || 0;
+          const newEffect = currentEffect + key.value;
+          element.style.filter = `hue-rotate(${newEffect}deg)`;
+        }
+        else if (key.key.startsWith("changebackgroundcolor")) {
+          const color = key.value;
+          setBackgroundColor(color);
+          console.log("ayaan", color)
+          element.style.setBackgroundColor = color;
         }
       }
     }
@@ -136,6 +130,7 @@ export default function CatSprite({ stream, modifyHistory }) {
           position: "absolute",
           left: `${leftRef.current}px`,
           top: `${topRef.current}px`,
+          backgroundColor: backgroundColor
         }}
         ref={catRef}
       >
@@ -149,6 +144,7 @@ export default function CatSprite({ stream, modifyHistory }) {
         >
           <g>
             <g id="Page-1" stroke="none" fillRule="evenodd">
+
               <g id="costume1">
                 <g id="costume1.1">
                   <g id="tail">
