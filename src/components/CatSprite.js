@@ -15,8 +15,7 @@ export default function CatSprite({ stream, modifyHistory }) {
   useEffect(() => {
     const element = catRef.current;
 
-    async function runAnimations() {
-      console.log(stream)
+    async function Animations() {
 
       for (let i = 0; i < stream?.length; i++) {
         const key = stream[i];
@@ -30,7 +29,7 @@ export default function CatSprite({ stream, modifyHistory }) {
             parseFloat(element.style[property] || 0) + increment;
           const startValue = isMoveX ? leftRef.current : topRef.current;
 
-          await animateMovement(property, startValue, targetValue);
+          await Movement(property, startValue, targetValue);
         } else if (key.key.startsWith("turnanti")) {
           angleRef.current -= key.value;
           element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
@@ -95,13 +94,12 @@ export default function CatSprite({ stream, modifyHistory }) {
         else if (key.key.startsWith("changebackgroundcolor")) {
           const color = key.value;
           setBackgroundColor(color);
-          console.log("ayaan", color)
           element.style.setBackgroundColor = color;
         }
       }
     }
 
-    async function animateMovement(property, startValue, targetValue) {
+    async function Movement(property, startValue, targetValue) {
       return new Promise((resolve) => {
         const animate = () => {
           const currentValue = parseFloat(element.style[property] || 0);
@@ -121,7 +119,7 @@ export default function CatSprite({ stream, modifyHistory }) {
       });
     }
 
-    runAnimations();
+    Animations();
   }, [stream]);
   return (
     <div style={{ position: "relative" }}>

@@ -53,7 +53,6 @@ export default function MidArea({
 
         const n = 0;
         if (input.className.includes(action)) {
-          console.log(blockId)
           if (input.type === "text") {
             if (input.id === "repeat") {
               n = input.value;
@@ -84,7 +83,6 @@ export default function MidArea({
             });
           }
         }
-        // console.log("ayaan", input.className, action, input.className.includes(action))
       });
     });
 
@@ -139,11 +137,6 @@ export default function MidArea({
         }
       });
     });
-    // console.log(
-    //   "Input values for container",
-    //   blockId,
-    //   newValues[blockId]
-    // );
   }
 
   return (

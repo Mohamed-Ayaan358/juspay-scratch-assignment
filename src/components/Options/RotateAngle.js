@@ -32,7 +32,6 @@ const RotateAngle = (value) => {
             value={steps}
             onChange={handleInputChange}
           />
-          {/* {console.log("stepcheckx" + steps)} */}
         </div>
       </div>
     </div>

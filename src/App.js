@@ -43,7 +43,6 @@ export default function App() {
 
     const destinationblockId = actionEvent.destination.droppableId;
     const draggableId = actionEvent.draggableId.split("-")[0];
-    console.log(draggableId)
 
     const updatedblocks = blocks.map((block) => {
       if (block.id === destinationblockId) {
