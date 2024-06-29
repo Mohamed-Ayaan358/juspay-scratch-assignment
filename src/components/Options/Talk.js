@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 const Talk = (value) => {
   const [steps, setSteps] = useState("");
 
-  const parentContainerStyle = {
-    maxWidth: '200px',
-    margin: '10px',
-  };
+
 
   const handleInputChange = (e) => {
     setSteps(e.target.value);
   };
 
   return (
-    <div style={parentContainerStyle}>
+    <div style={{
+      maxWidth: '200px',
+      margin: '10px',
+    }}>
       <div className="bg-purple-700 rounded-md p-1 flex items-center"
       >
         <p className="text-white text-xs mr-2">Talk {" "}</p>

@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 const ModifyColor = (value) => {
   const [steps, setSteps] = useState(0);
 
-  const parentContainerStyle = {
-    maxWidth: '200px',
-    margin: '10px',
-  };
+
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
@@ -19,7 +16,10 @@ const ModifyColor = (value) => {
 
 
   return (
-    <div style={parentContainerStyle}>
+    <div style={{
+      maxWidth: '200px',
+      margin: '10px',
+    }}>
       <div className="bg-purple-700 rounded-md p-1 flex items-center">
         <p className="text-white text-xs mr-2">Change color effect by{" "}</p>
         <div className="flex-1">

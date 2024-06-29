@@ -1,10 +1,7 @@
 import React from 'react';
 
 const StartFlag = () => {
-  const parentContainerStyle = {
-    maxWidth: '200px',
-    margin: '10px',
-  };
+
 
   const flagContainerStyle = {
     backgroundColor: 'green',
@@ -25,7 +22,10 @@ const StartFlag = () => {
   };
 
   return (
-    <div style={parentContainerStyle} id='flag'>
+    <div style={{
+      maxWidth: '200px',
+      margin: '10px',
+    }} id='flag'>
       <div style={flagContainerStyle}>
         <p style={flagTextStyle}>Flag</p>
         <span style={flagEmojiStyle}>🚩</span>

@@ -4,10 +4,7 @@ const JumpTo = (value) => {
   const [stepsY, setStepsY] = useState(0);
 
 
-  const parentContainerStyle = {
-    maxWidth: '200px',
-    margin: '10px',
-  };
+
 
   const handleInputChange = (e) => {
     const inputValue = parseInt(e.target.value);
@@ -32,7 +29,10 @@ const JumpTo = (value) => {
   };
 
   return (
-    <div style={parentContainerStyle}>
+    <div style={{
+      maxWidth: '200px',
+      margin: '10px',
+    }}>
       <div className="bg-blue-500 rounded-md p-1 flex items-center">
         <p className="text-white text-xs mr-2">Go to {"X|Y"}</p>
         <div className="flex-1">
