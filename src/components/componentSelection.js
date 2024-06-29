@@ -47,9 +47,6 @@ export const componentSelection = (key, id) => {
       return <Loop value={id} />;
     case "START_FLAG":
       return <StartFlag value={id} />;
-    default:
-      // Handle unknown command case
-      return null;
   }
 
 };

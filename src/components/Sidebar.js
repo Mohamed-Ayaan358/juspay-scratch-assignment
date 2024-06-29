@@ -15,6 +15,7 @@ export default function Sidebar() {
     "TURN_COUNTERCLOCKWISE",
     "TALK",
     "MODIFY_SIZE",
+    "DEFINE_SIZE",
     "MODIFY_COLOR",
     "MODIFY_BG_COLOR",
     "DEFINE_SIZ",

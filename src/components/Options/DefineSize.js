@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 const DefineSize = (value) => {
   const [steps, setSteps] = useState(0);
-
-
-
   const handleInputChange = (e) => {
     const inputValue = parseInt(e.target.value);
     if (!isNaN(inputValue)) {
