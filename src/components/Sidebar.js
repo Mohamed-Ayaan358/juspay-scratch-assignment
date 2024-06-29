@@ -9,14 +9,15 @@ export default function Sidebar() {
     "MOVEX",
     "MOVEY",
     "GOTO",
+    "GOTORANDOM",
     "TURNCLOCK",
     "TURNANTI",
     "SPEAK",
     "CHANGESIZE",
     "SETSIZE",
-    "WAIT",
-    "REPEAT",
-    "FLAG"
+    // "WAIT",
+    // "REPEAT",
+    // "FLAG"
   ];
 
   return (

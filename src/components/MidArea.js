@@ -41,7 +41,6 @@ export default function MidArea({
     }
     getIndivStream(blockId, action)
     setStreams(newValues[blockId]);
-    // console.log("ayaan", event)
   }
 
   function getIndivStream(blockId, action) {
@@ -54,6 +53,7 @@ export default function MidArea({
 
         const n = 0;
         if (input.className.includes(action)) {
+          console.log(blockId)
           if (input.type === "text") {
             if (input.id === "repeat") {
               n = input.value;
@@ -227,6 +227,7 @@ export default function MidArea({
                         {...provided.dragHandleProps}
                         style={{ flex: 1 }}
                       >
+
                         {componentSelection(item.split("-")[0], item)}
                       </div>
                       <span style={{

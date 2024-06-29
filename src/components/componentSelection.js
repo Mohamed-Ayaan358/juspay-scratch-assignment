@@ -2,6 +2,7 @@ import React from "react";
 import MoveX from "./Options/MoveX";
 import MoveY from "./Options/MoveY";
 import Goto from "./Options/Goto";
+import GotoR from "./Options/GotoRandom";
 import ChangeSize from "./Options/ChangeSize";
 import Repeat from "./Options/Repeat";
 import SetSize from "./Options/SetSize";
@@ -12,28 +13,30 @@ import Wait from "./Options/Wait";
 import Flag from "./Options/Flag";
 
 export const componentSelection = (key, id) => {
-  switch (key) {
+  switch (key.toUpperCase()) {
     case "MOVEX":
-      return <MoveX />;
+      return <MoveX value={id} />;
     case "MOVEY":
-      return <MoveY />;
+      return <MoveY value={id} />;
     case "GOTO":
-      return <Goto />;
+      return <Goto value={id} />;
+    case "GOTORANDOM":
+      return < GotoR value={id} />;
     case "WAIT":
-      return <Wait />;
+      return <Wait value={id} />;
     case "TURNCLOCK":
-      return <TurnClock />;
+      return <TurnClock value={id} />;
     case "TURNANTI":
-      return <TurnAnti />;
+      return <TurnAnti value={id} />;
     case "SPEAK":
-      return <Speak />;
+      return <Speak value={id} />;
     case "CHANGESIZE":
-      return <ChangeSize />;
+      return <ChangeSize value={id} />;
     case "SETSIZE":
-      return <SetSize />;
+      return <SetSize value={id} />;
     case "REPEAT":
-      return <Repeat />;
+      return <Repeat value={id} />;
     case "FLAG":
-      return <Flag />;
+      return <Flag value={id} />;
   }
 };

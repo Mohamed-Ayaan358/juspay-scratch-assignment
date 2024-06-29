@@ -15,6 +15,8 @@ export default function CatSprite({ stream, modifyHistory }) {
     const element = catRef.current;
 
     async function runAnimations() {
+      console.log(stream)
+
       for (let i = 0; i < stream?.length; i++) {
         const key = stream[i];
         modifyHistory(prevArray => [...prevArray, stream[i]])
@@ -34,17 +36,58 @@ export default function CatSprite({ stream, modifyHistory }) {
         } else if (key.key.startsWith("turnclock")) {
           angleRef.current += key.value;
           element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
-        } else if (key.key.startsWith("goto")) {
+        } else if (key.key.startsWith("gotoX")) {
           const targetX = key.value;
 
-          const targetY = 0;
+          // const targetY = key.value;
 
           element.style.left = `${targetX}px`;
-          element.style.top = `${targetY}px`;
+          // element.style.top = `${targetY}px`;
 
           leftRef.current = targetX;
+          // topRef.current = targetY;
+        }
+        else if (key.key.startsWith("gotoXRandom")) {
+          const targetX = key.value;
+
+          // const targetY = key.value;
+
+          element.style.left = `${targetX}px`;
+          // element.style.top = `${targetY}px`;
+
+          leftRef.current = targetX;
+          // topRef.current = targetY;
+        }
+        else if (key.key.startsWith("gotoYRandom")) {
+          const targetY = key.value;
+
+          // const targetY = key.value;
+
+          element.style.left = `${targetY}px`;
+          // element.style.top = `${targetY}px`;
+
+          leftRef.current = targetY;
+          // topRef.current = targetY;
+        }
+
+        else if (key.key.startsWith("gotoY")) {
+          const targetY = key.value;
+          element.style.top = `${targetY}px`;
           topRef.current = targetY;
-        } else if (key.key.startsWith("changesize")) {
+
+        }
+        else if (key.key.startsWith("gotoX")) {
+          const targetX = key.value;
+
+          // const targetY = key.value;
+
+          element.style.left = `${targetX}px`;
+          // element.style.top = `${targetY}px`;
+
+          leftRef.current = targetX;
+          // topRef.current = targetY;
+        }
+        else if (key.key.startsWith("changesize")) {
           scaleRef.current += key.value / 100;
           element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
         } else if (key.key.startsWith("setsize")) {

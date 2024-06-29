@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+const ChangeSize = (value) => {
 
-const MoveX = (value) => {
+
+
+
   const [steps, setSteps] = useState(0);
 
   const parentContainerStyle = {
@@ -12,30 +15,32 @@ const MoveX = (value) => {
     const inputValue = e.target.value;
     // Use a regular expression to check if it's a valid integer or a valid negative integer
     if (/^-?\d+$/.test(inputValue)) {
-      setSteps(parseInt(inputValue));
+      setSteps(inputValue);
     } else {
       setSteps(0);
     }
   };
 
+
   return (
     <div style={parentContainerStyle}>
-      <div className="bg-blue-500 rounded-md p-1 flex items-center">
-        <p className="text-white text-xs mr-2">Steps in the X axis {" "}</p>
+      <div className="bg-purple-700 rounded-md p-1 flex items-center"
+      >
+        <p className="text-white text-xs mr-2">Change Size to {" "}</p>
         <div className="flex-1">
           <input
-            id='movex'
-            name='movex'
+            id='changesize'
             type="text"
             placeholder="Enter Steps"
             className={`p-1 rounded-md w-full text-xs border-none ${value.value}`}
             value={steps}
             onChange={handleInputChange}
           />
+          {/* {console.log("stepcheckx" + steps)} */}
         </div>
       </div>
     </div>
   );
 };
 
-export default MoveX;
+export default ChangeSize
