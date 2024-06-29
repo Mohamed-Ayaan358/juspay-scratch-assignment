@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import { getComponent } from "./getComp";
+import { componentSelection } from "./componentSelection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function MidArea({
   blocks,
@@ -80,11 +80,6 @@ export default function MidArea({
       });
     });
 
-    console.log(
-      "Input values for block",
-      blockId,
-      newValues[blockId]
-    );
   }
 
   return (
@@ -144,7 +139,33 @@ export default function MidArea({
               >
                 Run
               </button>
-
+              {block.actions.map((item, index) => (
+                <Draggable key={item} draggableId={item} index={index}>
+                  {(provided) => (
+                    <div className="graybox" style={{ display: "flex" }}>
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        style={{ flex: 1 }}
+                      >
+                        {componentSelection(item.split("-")[0])}
+                      </div>
+                      <span
+                        style={{
+                          color: "red",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                        onClick={() => handleDelete(block.id, index)}
+                      >
+                        <FontAwesomeIcon icon={faXmark} />
+                      </span>
+                    </div>
+                  )}
+                </Draggable>
+              ))}
             </ul>
           )}
         </Droppable>
