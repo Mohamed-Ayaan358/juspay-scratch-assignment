@@ -1,52 +1,55 @@
 import React from "react";
-import MoveX from "./Options/MoveX";
-import MoveY from "./Options/MoveY";
-import Goto from "./Options/Goto";
-import GotoR from "./Options/GotoRandom";
-import RotateDegree from "./Options/rotate";
-import ChangeSize from "./Options/ChangeSize";
-import Repeat from "./Options/Repeat";
-import SetSize from "./Options/SetSize";
-import Speak from "./Options/Speak";
-import TurnAnti from "./Options/TurnAnti";
-import TurnClock from "./Options/TurnClock";
-import Wait from "./Options/Wait";
-import Flag from "./Options/Flag";
-import ChangeColor from "./Options/changecolor";
-import ChangeBackgroundColor from "./Options/changeBackground";
+import ShiftX from "./Options/ShiftX";
+import ShiftY from "./Options/ShiftY";
+import JumpTo from "./Options/JumpTo";
+import JumpToRandom from "./Options/JumpToRandom";
+import RotateAngle from "./Options/RotateAngle";
+import ModifySize from "./Options/ModifySize";
+import Loop from "./Options/Loop";
+import DefineSize from "./Options/DefineSize";
+import Talk from "./Options/Talk";
+import TurnCounterclockwise from "./Options/TurnCounterclockwise";
+import TurnClockwise from "./Options/TurnClockwise";
+import Pause from "./Options/Pause";
+import StartFlag from "./Options/StartFlag";
+import ModifyColor from "./Options/ModifyColor";
+import ModifyBackgroundColor from "./Options/ModifyBackgroundColor";
 
 export const componentSelection = (key, id) => {
   switch (key.toUpperCase()) {
-    case "MOVEX":
-      return <MoveX value={id} />;
-    case "MOVEY":
-      return <MoveY value={id} />;
-    case "GOTO":
-      return <Goto value={id} />;
-    case "GOTORANDOM":
-      return < GotoR value={id} />;
-    case "ROTATEDEGREE":
-      return <RotateDegree value={id} />;
-    case "WAIT":
-      return <Wait value={id} />;
-    case "TURNCLOCK":
-      return <TurnClock value={id} />;
-    case "TURNANTI":
-      return <TurnAnti value={id} />;
-    case "SPEAK":
-      return <Speak value={id} />;
-    case "CHANGESIZE":
-      return <ChangeSize value={id} />;
-    case "SETSIZE":
-      return <SetSize value={id} />;
-    case "REPEAT":
-      return <Repeat value={id} />;
-    case "FLAG":
-      return <Flag value={id} />;
-    case "CHANGECOLOR":
-      return <ChangeColor value={id} />
-    case "CHANGEBACKGROUNDCOLOR":
-      return <ChangeBackgroundColor value={id} />
+    case "SHIFTX":
+      return <ShiftX value={id} />;
+    case "SHIFTY":
+      return <ShiftY value={id} />;
+    case "JUMPTO":
+      return <JumpTo value={id} />;
+    case "JUMPTO_RANDOM":
+      return <JumpToRandom value={id} />;
+    case "ROTATE_ANGLE":
+      return <RotateAngle value={id} />;
+    case "TURN_CLOCKWISE":
+      return <TurnClockwise value={id} />;
+    case "TURN_COUNTERCLOCKWISE":
+      return <TurnCounterclockwise value={id} />;
+    case "TALK":
+      return <Talk value={id} />;
+    case "MODIFY_SIZE":
+      return <ModifySize value={id} />;
+    case "MODIFY_COLOR":
+      return <ModifyColor value={id} />;
+    case "MODIFY_BG_COLOR":
+      return <ModifyBackgroundColor value={id} />;
+    case "DEFINE_SIZE":
+      return <DefineSize value={id} />;
+    case "PAUSE":
+      return <Pause value={id} />;
+    case "LOOP":
+      return <Loop value={id} />;
+    case "START_FLAG":
+      return <StartFlag value={id} />;
+    default:
+      // Handle unknown command case
+      return null;
   }
 
 };

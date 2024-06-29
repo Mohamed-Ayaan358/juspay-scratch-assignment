@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const Speak = (value) => {
+const Talk = (value) => {
   const [steps, setSteps] = useState("");
 
   const parentContainerStyle = {
@@ -15,7 +15,7 @@ const Speak = (value) => {
     <div style={parentContainerStyle}>
       <div className="bg-purple-700 rounded-md p-1 flex items-center"
       >
-        <p className="text-white text-xs mr-2">Speak {" "}</p>
+        <p className="text-white text-xs mr-2">Talk {" "}</p>
         <div className="flex-1">
           <input
             id='speak'
@@ -31,4 +31,4 @@ const Speak = (value) => {
   );
 };
 
-export default Speak
+export default Talk

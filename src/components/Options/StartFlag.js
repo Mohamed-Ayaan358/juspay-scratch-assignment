@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Flag = () => {
+const StartFlag = () => {
   const parentContainerStyle = {
     maxWidth: '200px',
     margin: '10px',
@@ -34,4 +34,4 @@ const Flag = () => {
   );
 };
 
-export default Flag;
+export default StartFlag;

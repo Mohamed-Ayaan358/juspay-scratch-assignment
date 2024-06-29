@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const RotateDegree = (value) => {
+const TurnCounterclockwise = (value) => {
 
   const [steps, setSteps] = useState(0);
 
@@ -22,10 +22,10 @@ const RotateDegree = (value) => {
   return (
     <div style={parentContainerStyle}>
       <div className="bg-blue-500 rounded-md p-1 flex items-center">
-        <p className="text-white text-xs mr-2">Rotate degree to direction{" "}</p>
+        <p className="text-white text-xs mr-2">Turn Anticlock for {" "}</p>
         <div className="flex-1">
           <input
-            id='rotatedegree'
+            id='turnanti'
             type="text"
             placeholder="Enter Steps"
             className={`p-1 rounded-md w-full text-xs border-none ${value.value}`}
@@ -39,4 +39,4 @@ const RotateDegree = (value) => {
   );
 };
 
-export default RotateDegree
+export default TurnCounterclockwise

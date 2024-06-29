@@ -80,8 +80,7 @@ export default function App() {
         </div>
         <div className="p-4">
           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-bold text-gray-700 ml-2 my-2">
-            {" "}
-            {"History"}{" "}
+            {"History"}
           </div>
 
           <span id="block-100">

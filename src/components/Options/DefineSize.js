@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const SetSize = (value) => {
+const DefineSize = (value) => {
   const [steps, setSteps] = useState(0);
 
   const parentContainerStyle = {
@@ -22,7 +22,7 @@ const SetSize = (value) => {
     <div style={parentContainerStyle}>
       <div className="bg-purple-700 rounded-md p-1 flex items-center"
       >
-        <p className="text-white text-xs mr-2">SetSize to {" "}</p>
+        <p className="text-white text-xs mr-2">Set the Size to {" "}</p>
         <div className="flex-1">
           <input
             id='setsize'
@@ -39,4 +39,4 @@ const SetSize = (value) => {
   );
 };
 
-export default SetSize
+export default DefineSize

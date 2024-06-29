@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
-const ChangeSize = (value) => {
-
-
-
-
+const Pause = (value) => {
   const [steps, setSteps] = useState(0);
 
   const parentContainerStyle = {
@@ -12,24 +8,23 @@ const ChangeSize = (value) => {
   };
 
   const handleInputChange = (e) => {
-    const inputValue = e.target.value;
-    // Use a regular expression to check if it's a valid integer or a valid negative integer
-    if (/^-?\d+$/.test(inputValue)) {
+    const inputValue = parseInt(e.target.value);
+    if (!isNaN(inputValue)) {
+
       setSteps(inputValue);
     } else {
+
       setSteps(0);
     }
   };
 
-
   return (
     <div style={parentContainerStyle}>
-      <div className="bg-purple-700 rounded-md p-1 flex items-center"
-      >
-        <p className="text-white text-xs mr-2">Change Size to {" "}</p>
+      <div className="bg-yellow-400 rounded-md p-1 flex items-center">
+        <p className="text-white text-xs mr-2">Pause for {" "}</p>
         <div className="flex-1">
           <input
-            id='changesize'
+            id='wait'
             type="text"
             placeholder="Enter Steps"
             className={`p-1 rounded-md w-full text-xs border-none ${value.value}`}
@@ -43,4 +38,4 @@ const ChangeSize = (value) => {
   );
 };
 
-export default ChangeSize
+export default Pause
