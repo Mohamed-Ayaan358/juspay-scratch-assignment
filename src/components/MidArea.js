@@ -3,13 +3,14 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import { componentSelection } from "./componentSelection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function MidArea({
   blocks,
   setBlocks,
   setStreams,
 }) {
-
+  // Store the history of all of the actions done
 
   const addblock = () => {
     const newblockId = `block-${blocks.length + 1}`;
@@ -32,6 +33,62 @@ export default function MidArea({
 
   const [newValues, setNewValues] = useState({});
 
+
+  const indivClick = (blockId, action) => {
+    // setStreams()
+    if (!newValues[blockId]) {
+      newValues[blockId] = [];
+    }
+    getIndivStream(blockId, action)
+    setStreams(newValues[blockId]);
+    // console.log("ayaan", event)
+  }
+
+  function getIndivStream(blockId, action) {
+    newValues[blockId] = [];
+
+    document.querySelectorAll(`#${blockId} .graybox`).forEach((graybox) => {
+      const inputs = graybox.querySelectorAll("input");
+
+      inputs.forEach((input) => {
+
+        const n = 0;
+        if (input.className.includes(action)) {
+          if (input.type === "text") {
+            if (input.id === "repeat") {
+              n = input.value;
+            }
+
+            if (input.type === "text" && input.id === "repeat") {
+              for (let i = 0; i < n; i++) {
+                newValues[blockId].push({
+                  key: `${input.id}${i}`,
+                  value: parseFloat(input.value),
+                });
+              }
+            } else if (!isNaN(input.value)) {
+              newValues[blockId].push({
+                key: `${input.id}`,
+                value: parseFloat(input.value),
+              });
+            } else {
+              newValues[blockId].push({
+                key: `${input.id}`,
+                value: input.value,
+              });
+            }
+          } else if (input.type === "number") {
+            newValues[blockId].push({
+              key: `${input.id}`,
+              value: parseFloat(input.value),
+            });
+          }
+        }
+        // console.log("ayaan", input.className, action, input.className.includes(action))
+      });
+    });
+
+  }
   const runClick = (blockId) => {
     setCurrentblockId(blockId);
 
@@ -44,12 +101,11 @@ export default function MidArea({
   };
 
   function getStream(blockId) {
-    console.log("blockId", `#${blockId}`, blocks);
-
     newValues[blockId] = [];
 
     document.querySelectorAll(`#${blockId} .graybox`).forEach((graybox) => {
       const inputs = graybox.querySelectorAll("input");
+
       inputs.forEach((input) => {
         const n = 0;
         if (input.type === "text") {
@@ -83,7 +139,11 @@ export default function MidArea({
         }
       });
     });
-
+    // console.log(
+    //   "Input values for container",
+    //   blockId,
+    //   newValues[blockId]
+    // );
   }
 
   return (
@@ -167,8 +227,15 @@ export default function MidArea({
                         {...provided.dragHandleProps}
                         style={{ flex: 1 }}
                       >
-                        {componentSelection(item.split("-")[0])}
+                        {componentSelection(item.split("-")[0], item)}
                       </div>
+                      <span style={{
+                        color: "green",
+                        cursor: "pointer",
+                        display: "flex",
+                        marginRight: "10px",
+                        alignItems: "center",
+                      }} onClick={() => indivClick(block.id, item)}><FontAwesomeIcon icon={faCheck} /></span>
                       <span
                         style={{
                           color: "red",
