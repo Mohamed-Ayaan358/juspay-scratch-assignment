@@ -19,6 +19,11 @@ export default function CatSprite({ stream, modifyHistory }) {
 
       for (let i = 0; i < stream?.length; i++) {
         const key = stream[i];
+
+        // if (key.value == NaN) {
+        //   console.log(key)
+        // }
+        console.log(key.value === NaN, typeof (key.value))
         modifyHistory(prevArray => [...prevArray, stream[i]])
 
         if (key.key.startsWith("movex") || key.key.startsWith("movey")) {

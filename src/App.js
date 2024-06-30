@@ -23,11 +23,9 @@ export default function App() {
     newValues["block-100"] = [];
     newValues["block-100"].push({
       key: `${action}`.split("-")[0],
-      value: parseFloat(value),
+      value: value,
     });
   }
-  // 
-
 
   const [blocks, setBlocks] = useState([
     {
