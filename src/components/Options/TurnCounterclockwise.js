@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const TurnCounterclockwise = (value) => {
 
   const [steps, setSteps] = useState(0);
@@ -23,7 +26,7 @@ const TurnCounterclockwise = (value) => {
       <div className="relative">
 
         <div className="bg-blue-500 rounded-md p-1 flex items-center">
-          <p className="text-white text-xs mr-2">Turn Anticlock for {" "}</p>
+          <p className="text-white text-xs mr-2">Turn <FontAwesomeIcon icon={faRotateLeft} /> for {" "}</p>
           <div className="flex-1">
             <input
               id='turnanti'
