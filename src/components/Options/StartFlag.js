@@ -4,7 +4,7 @@ const StartFlag = () => {
   return (
     <div className="max-w-200" id="flag">
       <div className="relative">
-        <div className="bg-green-500 rounded-md p-1 flex items-center" style={{ borderRadius: '0.25rem', padding: '0.25rem' }}>
+        <div className="bg-green-500 rounded-md rounded-sm p-1 mr-2 flex items-center" >
           <p className="text-white text-xs mr-2">Flag</p>
           <span className="text-md">🚩</span>
         </div>

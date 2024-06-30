@@ -10,7 +10,6 @@ export default function MidArea({
   setBlocks,
   setStreams,
 }) {
-  // Store the history of all of the actions done
 
   const addblock = () => {
     const newblockId = `block-${blocks.length + 1}`;
@@ -42,8 +41,8 @@ export default function MidArea({
   function getIndivStream(blockId, action) {
     newValues[blockId] = [];
 
-    document.querySelectorAll(`#${blockId} .graybox`).forEach((graybox) => {
-      const inputs = graybox.querySelectorAll("input");
+    document.querySelectorAll(`#${blockId} .actionblock`).forEach((actionblock) => {
+      const inputs = actionblock.querySelectorAll("input");
 
       inputs.forEach((input) => {
 
@@ -54,18 +53,18 @@ export default function MidArea({
               n = input.value;
             }
 
-            if (input.type === "text" && input.id === "repeat") {
+            if (!isNaN(input.value)) {
+              newValues[blockId].push({
+                key: `${input.id}`,
+                value: parseFloat(input.value),
+              });
+            } else if (input.type === "text" && input.id === "repeat") {
               for (let i = 0; i < n; i++) {
                 newValues[blockId].push({
                   key: `${input.id}${i}`,
                   value: parseFloat(input.value),
                 });
               }
-            } else if (!isNaN(input.value)) {
-              newValues[blockId].push({
-                key: `${input.id}`,
-                value: parseFloat(input.value),
-              });
             } else {
               newValues[blockId].push({
                 key: `${input.id}`,
@@ -96,8 +95,8 @@ export default function MidArea({
   function getStream(blockId) {
     newValues[blockId] = [];
 
-    document.querySelectorAll(`#${blockId} .graybox`).forEach((graybox) => {
-      const inputs = graybox.querySelectorAll("input");
+    document.querySelectorAll(`#${blockId} .actionblock`).forEach((actionblock) => {
+      const inputs = actionblock.querySelectorAll("input");
 
       inputs.forEach((input) => {
         const n = 0;
@@ -140,15 +139,9 @@ export default function MidArea({
         {"Midarea"}
       </div>
 
-      <button style={{
-        backgroundColor: "green",
-        color: "white",
-        padding: "4px 8px",
-        borderRadius: "4px",
-        cursor: "pointer",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)",
-        marginLeft: "8px",
-      }} onClick={addblock}>
+      <button
+        className="bg-green-600 text-white px-2 py-1 rounded-md cursor-pointer shadow-sm ml-2 mb-3"
+        onClick={addblock}>
         Add block
       </button>
 
@@ -164,43 +157,16 @@ export default function MidArea({
               id={block.id}
               {...provided.droppableProps}
               ref={provided.innerRef}
-              style={{
-                backgroundColor: "#F0F0F0",
-                padding: "20px",
-                margin: "10px",
-                borderRadius: "8px",
-                boxShadow: "0 0 5px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1)",
-                width: "300px",
-                minHeight: "200px",
-                overflowY: "auto",
-                display: "flex",
-                flexDirection: "column",
-              }}
+              className="bg-gray-100 p-5 m-2 rounded-lg shadow-md w-72 min-h-48 overflow-y-auto flex flex-col"
             >
               <span
-                style={{
-                  color: "red",
-                  cursor: "pointer",
-                  display: "flex",
-                  marginLeft: "auto",
-                  alignItems: "center",
-                  marginBottom: "10px"
-                }}
+                className="text-red-500 cursor-pointer flex ml-auto items-center mb-4"
                 onClick={() => deleteblock(block.id)}
               >
                 Delete Block
               </span>
               <button
-                style={{
-                  backgroundColor: "green",
-                  color: "white",
-                  padding: "4px 8px",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)",
-                  marginLeft: "8px",
-                  marginBottom: "12px"
-                }}
+                className="bg-green-600 text-white px-2 py-1 rounded-md cursor-pointer shadow-sm ml-2 mb-3"
                 onClick={() => runClick(block.id)}
               >
                 Run Block
@@ -208,7 +174,7 @@ export default function MidArea({
               {block.actions.map((item, index) => (
                 <Draggable key={item} draggableId={item} index={index}>
                   {(provided) => (
-                    <div className="graybox" style={{ display: "flex" }}>
+                    <div className="actionblock" style={{ display: "flex" }}>
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
@@ -218,20 +184,13 @@ export default function MidArea({
 
                         {componentSelection(item.split("-")[0], item)}
                       </div>
-                      <span style={{
-                        color: "green",
-                        cursor: "pointer",
-                        display: "flex",
-                        marginRight: "10px",
-                        alignItems: "center",
-                      }} onClick={() => indivClick(block.id, item)}><FontAwesomeIcon icon={faCheck} /></span>
                       <span
-                        style={{
-                          color: "red",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
+                        className="text-green-600 cursor-pointer flex items-center mr-2"
+                        onClick={() => indivClick(block.id, item)}><FontAwesomeIcon icon={faCheck} /></span>
+                      <span
+
+                        className="text-red-500 cursor-pointer flex items-center"
+
                         onClick={() => handleDelete(block.id, index)}
                       >
                         <FontAwesomeIcon icon={faXmark} />
