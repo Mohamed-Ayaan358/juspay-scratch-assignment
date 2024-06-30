@@ -28,7 +28,7 @@ export default function Sidebar() {
     "START_FLAG"
   ];
 
-  const [expandedCategory, setExpandedCategory] = useState(null);
+  const [expandedCategory, setExpandedCategory] = useState("motion");
 
   const toggleCategory = (category) => {
     if (expandedCategory === category) {
