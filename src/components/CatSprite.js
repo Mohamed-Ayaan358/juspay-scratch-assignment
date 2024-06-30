@@ -5,15 +5,15 @@ export default function CatSprite({ stream, modifyHistory }) {
   const [showMessage, setShowMessage] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("");
 
+  const ref_cat = useRef(null);
+  const ref_angle = useRef(0);
+  const ref_left = useRef(0);
+  const ref_top = useRef(0);
+  const ref_scale = useRef(1);
 
-  const catRef = useRef(null);
-  const scaleRef = useRef(1);
-  const angleRef = useRef(0);
-  const leftRef = useRef(0);
-  const topRef = useRef(0);
 
   useEffect(() => {
-    const element = catRef.current;
+    const element = ref_cat.current;
 
     async function Animations() {
 
@@ -27,62 +27,62 @@ export default function CatSprite({ stream, modifyHistory }) {
           const property = isMoveX ? "left" : "top";
           const targetValue =
             parseFloat(element.style[property] || 0) + increment;
-          const startValue = isMoveX ? leftRef.current : topRef.current;
+          const startValue = isMoveX ? ref_left.current : ref_top.current;
 
           await Movement(property, startValue, targetValue);
         } else if (key.key.startsWith("turnanti")) {
-          angleRef.current -= key.value;
-          element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
+          ref_angle.current -= key.value;
+          element.style.transform = `rotate(${ref_angle.current}deg) scale(${ref_scale.current})`;
         } else if (key.key.startsWith("turnclock")) {
-          angleRef.current += key.value;
-          element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
+          ref_angle.current += key.value;
+          element.style.transform = `rotate(${ref_angle.current}deg) scale(${ref_scale.current})`;
         } else if (key.key.startsWith("jumptoX")) {
           const targetX = key.value;
           element.style.left = `${targetX}px`;
-          leftRef.current = targetX;
+          ref_left.current = targetX;
         } else if (key.key.startsWith("jumptoY")) {
           const targetY = key.value;
           element.style.left = `${targetY}px`;
-          leftRef.current = targetY;
+          ref_left.current = targetY;
         } else if (key.key.startsWith("gotoX")) {
           const targetX = key.value;
           element.style.left = `${targetX}px`;
-          leftRef.current = targetX;
+          ref_left.current = targetX;
         }
         else if (key.key.startsWith("gotoXRandom")) {
           const targetX = key.value;
           element.style.left = `${targetX}px`;
-          leftRef.current = targetX;
+          ref_left.current = targetX;
         }
         else if (key.key.startsWith("gotoYRandom")) {
           const targetY = key.value;
           element.style.left = `${targetY}px`;
 
-          leftRef.current = targetY;
+          ref_left.current = targetY;
         }
 
         else if (key.key.startsWith("gotoY")) {
           const targetY = key.value;
           element.style.top = `${targetY}px`;
-          topRef.current = targetY;
+          ref_top.current = targetY;
 
         }
         else if (key.key.startsWith("gotoX")) {
           const targetX = key.value;
           element.style.left = `${targetX}px`;
-          leftRef.current = targetX;
+          ref_left.current = targetX;
         }
         else if (key.key.startsWith("rotatedegree")) {
           const angle = key.value;
           const normalizedAngle = ((angle % 360) + 360) % 360;
-          element.style.transform = `rotate(${normalizedAngle}deg) scale(${scaleRef.current})`;
+          element.style.transform = `rotate(${normalizedAngle}deg) scale(${ref_scale.current})`;
         }
         else if (key.key.startsWith("changesize")) {
-          scaleRef.current += key.value / 100;
-          element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
+          ref_scale.current += key.value / 100;
+          element.style.transform = `rotate(${ref_angle.current}deg) scale(${ref_scale.current})`;
         } else if (key.key.startsWith("setsize")) {
-          scaleRef.current = key.value / 100;
-          element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
+          ref_scale.current = key.value / 100;
+          element.style.transform = `rotate(${ref_angle.current}deg) scale(${ref_scale.current})`;
         } else if (key.key.startsWith("wait")) {
           const waitTime = key.value * 1000;
           await new Promise((resolve) => setTimeout(resolve, waitTime));
@@ -134,11 +134,11 @@ export default function CatSprite({ stream, modifyHistory }) {
       <div
         style={{
           position: "absolute",
-          left: `${leftRef.current}px`,
-          top: `${topRef.current}px`,
+          left: `${ref_left.current}px`,
+          top: `${ref_top.current}px`,
           backgroundColor: backgroundColor
         }}
-        ref={catRef}
+        ref={ref_cat}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -324,8 +324,8 @@ export default function CatSprite({ stream, modifyHistory }) {
             className="message-box"
             style={{
               position: "relative",
-              left: `${leftRef.current + 100}px`,
-              top: `${topRef.current - 100}px`,
+              left: `${ref_left.current + 100}px`,
+              top: `${ref_top.current - 100}px`,
               backgroundColor: "#FFD6E1",
               padding: "10px",
               borderRadius: "10px",
