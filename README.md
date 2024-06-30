@@ -39,8 +39,10 @@ To get started:
     PAUSE
 
     LOOP
-    
+
     FLAG
+
+### Important points to note while using the application
 
 #### 1. There are 4 tabs, the Sidebar, MidArea, PreviewArea and the history tab.
 #### 2. If one wishes to perform a series of actions on the svg then they need to include these actions within the block.
@@ -49,6 +51,8 @@ To get started:
 #### 5. The history keeps track of all the actions performed on the SVG, again you can click the `Tick Mark` to perform the action again.
 #### 6. I have also attempted to make the application semi-interactable on smaller devices.
 
+## URL
+https://juspay-scratch-assignment.vercel.app/
 
 ## Tutorial video
 https://github.com/Mohamed-Ayaan358/juspay-scratch-assignment/assets/72858215/f683b689-7ba7-4836-8b7b-cbf2e82deeee
