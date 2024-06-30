@@ -36,6 +36,14 @@ export default function CatSprite({ stream, modifyHistory }) {
         } else if (key.key.startsWith("turnclock")) {
           angleRef.current += key.value;
           element.style.transform = `rotate(${angleRef.current}deg) scale(${scaleRef.current})`;
+        } else if (key.key.startsWith("jumptoX")) {
+          const targetX = key.value;
+          element.style.left = `${targetX}px`;
+          leftRef.current = targetX;
+        } else if (key.key.startsWith("jumptoY")) {
+          const targetY = key.value;
+          element.style.left = `${targetY}px`;
+          leftRef.current = targetY;
         } else if (key.key.startsWith("gotoX")) {
           const targetX = key.value;
           element.style.left = `${targetX}px`;

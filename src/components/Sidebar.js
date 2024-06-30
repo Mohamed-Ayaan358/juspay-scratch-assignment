@@ -9,6 +9,8 @@ export default function Sidebar() {
     "SHIFTX",
     "SHIFTY",
     "JUMPTO",
+    "JUMP_TO_X",
+    "JUMP_TO_Y",
     "JUMPTO_RANDOM",
     "ROTATE_ANGLE",
     "TURN_CLOCKWISE",
@@ -21,12 +23,13 @@ export default function Sidebar() {
     "DEFINE_SIZ",
     "PAUSE",
     "LOOP",
-    "START_FLAG"
+    "START_FLAG",
+
   ];
 
   return (
-    <div className="w-60 flex-none h-full overflow-y-auto flex flex-col items-start p-2 border-r border-gray-200">
-      <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-bold text-gray-700 mr-2 mb-2">
+    <div className="md:w-60 w-24 flex-none h-full overflow-y-auto flex flex-col items-start p-2 border-r border-gray-200">
+      <div className="inline-block bg-blue-400 rounded-full px-3 py-1 text-sm font-bold text-white-700 mr-2 mb-2">
 
         {"Sidebar"}
       </div>

@@ -14,6 +14,8 @@ import Pause from "./Options/Pause";
 import StartFlag from "./Options/StartFlag";
 import ModifyColor from "./Options/ModifyColor";
 import ModifyBackgroundColor from "./Options/ModifyBackgroundColor";
+import JumpToX from "./Options/JumpToX";
+import JumpToY from "./Options/JumpToY";
 
 export const componentSelection = (key, id) => {
   switch (key.toUpperCase()) {
@@ -47,6 +49,11 @@ export const componentSelection = (key, id) => {
       return <Loop value={id} />;
     case "START_FLAG":
       return <StartFlag value={id} />;
+    case "JUMP_TO_X":
+      return <JumpToX value={id} />;
+    case "JUMP_TO_Y":
+      return <JumpToY value={id} />;
+
   }
 
 };
