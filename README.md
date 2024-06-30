@@ -50,6 +50,7 @@ To get started:
 #### 4. You also have the ability to create or delete blocks individually.
 #### 5. The history keeps track of all the actions performed on the SVG, again you can click the `Tick Mark` to perform the action again.
 #### 6. I have also attempted to make the application semi-interactable on smaller devices.
+#### 7. The motion, lock and control tabs have their respective actions, they need to be opened to use the actions.
 
 ## URL
 https://juspay-scratch-assignment.vercel.app/
