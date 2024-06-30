@@ -10,10 +10,6 @@ const ModifyBackgroundColor = (value) => {
         { label: 'Indigo', value: '#4B0082' },
         { label: 'Violet', value: '#EE82EE' },
     ]
-    const parentContainerStyle = {
-        maxWidth: '200px',
-        margin: '10px',
-    };
 
     const handleInputChange = (e) => {
         setSteps(e.target.value);
