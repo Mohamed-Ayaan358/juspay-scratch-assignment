@@ -84,9 +84,13 @@ export default function App() {
               <span id="block-100">
                 {history.map((home, index) => (
                   <div key={index} className="flex items-center mb-2">
-                    <div>
-                      <span className="ml-5">{index + ". "}</span>
-                      {home.key + '-' + index + " : " + home.value}
+                    <div className="flex items-center">
+                      <span className="bg-gray-300 ml-5 rounded-full h-6 w-6 flex items-center justify-center text-gray-700 text-sm">
+                        {index + 1}
+                      </span>
+                      <span className="ml-3 bg-gray-300 rounded-md p-1 flex items-center">
+                        {home.key + '-' + index + " : " + home.value}
+                      </span>
                     </div>
                     <span
                       className="text-green-500 cursor-pointer ml-5"
