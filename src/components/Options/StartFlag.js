@@ -1,34 +1,14 @@
 import React from 'react';
 
 const StartFlag = () => {
-
-
-  const flagContainerStyle = {
-    backgroundColor: 'green',
-    borderRadius: '0.25rem',
-    padding: '0.25rem',
-    display: 'flex',
-    alignItems: 'center',
-  };
-
-  const flagTextStyle = {
-    color: 'white',
-    fontSize: '0.75rem',
-    marginRight: '0.5rem',
-  };
-
-  const flagEmojiStyle = {
-    fontSize: '1rem',
-  };
-
   return (
-    <div style={{
-      maxWidth: '200px',
-      margin: '10px',
-    }} id='flag'>
-      <div style={flagContainerStyle}>
-        <p style={flagTextStyle}>Flag</p>
-        <span style={flagEmojiStyle}>🚩</span>
+    <div className="max-w-200" id="flag">
+      <div className="relative">
+        <div className="bg-green-500 rounded-md p-1 flex items-center" style={{ borderRadius: '0.25rem', padding: '0.25rem' }}>
+          <p className="text-white text-xs mr-2">Flag</p>
+          <span className="text-md">🚩</span>
+        </div>
+        <div className="absolute bottom-5 left-0 h-5 w-10 bg-green-500 transform  rounded-lg"></div>
       </div>
     </div>
   );

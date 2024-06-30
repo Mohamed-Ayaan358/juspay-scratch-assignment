@@ -51,6 +51,7 @@ export default function Sidebar() {
                       {...value.draggableProps}
                       {...value.dragHandleProps}
                     >
+                      <div className="my-5"></div>
                       {componentSelection(item)}
                     </ul>
                   )}

@@ -22,28 +22,31 @@ const ModifyBackgroundColor = (value) => {
     return (
         <div style={{
             maxWidth: '200px',
-            margin: '10px',
         }}>
-            <div className="bg-purple-700 rounded-md p-1 flex items-center">
-                <p className="text-white text-xs mr-2">Choose Background {" "}</p>
-                <div className="flex-1">
-                    <input
-                        id="changebackgroundcolor"
-                        type="text"
-                        placeholder="Choose Background"
-                        className={`p-1 rounded-md w-full text-xs border-none ${value.value}`}
-                        value={steps}
-                        onChange={handleInputChange}
-                        list="color-options"
-                    />
-                    <datalist id="color-options">
-                        {RainbowColors.map((color) => (
-                            <option key={color.value} value={color.value}>
-                                {color.label}
-                            </option>
-                        ))}
-                    </datalist>
+            <div className='relative'>
+                <div className="bg-purple-700 rounded-md p-1 flex items-center">
+                    <p className="text-white text-xs mr-2">Choose Background {" "}</p>
+                    <div className="flex-1">
+                        <input
+                            id="changebackgroundcolor"
+                            type="text"
+                            placeholder="Choose Background"
+                            className={`p-1 rounded-md w-full text-xs border-none ${value.value}`}
+                            value={steps}
+                            onChange={handleInputChange}
+                            list="color-options"
+                        />
+                        <datalist id="color-options">
+                            {RainbowColors.map((color) => (
+                                <option key={color.value} value={color.value}>
+                                    {color.label}
+                                </option>
+                            ))}
+                        </datalist>
+                    </div>
                 </div>
+                <div className="absolute bottom-5 left-0 h-5 w-10 bg-purple-700 transform rounded-all rounded-lg"></div>
+
             </div>
         </div>
     );

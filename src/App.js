@@ -74,32 +74,35 @@ export default function App() {
             />
           </DragDropContext>
         </div>
-        <div className="w-1/3 h-screen overflow-hidden flex flex-row bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
+        <div className="w-1/4 h-screen overflow-hidden flex flex-row bg-white border-t border-l border-gray-200 rounded-tr-xl rounded-tl-xl ">
           <PreviewArea stream={stream} modifyHistory={setHistory} />
         </div>
-        <div className="p-4">
-          <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-bold text-gray-700 ml-2 my-2">
-            {"History"}
-          </div>
+        <div className="w-1/4 h-screen overflow-hidden flex flex-row bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
+          <div>
+            <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-bold text-gray-700 ml-2 my-2">
+              {"History"}
+            </div>
 
-          <span id="block-100">
+            <span id="block-100">
 
-            {history.map(home =>
-              <div>
-
+              {history.map(home =>
                 <div>
-                  {history.indexOf(home) + ". "}{home.key + '-' + history.indexOf(home) + " : " + home.value}
 
-                </div>
-                <span style={{
-                  color: "green",
-                  cursor: "pointer",
-                  marginRight: "10px",
-                }} onClick={() => indivClick(home.key.split("-")[0] + '-' + history.indexOf(home), home.value)}><FontAwesomeIcon icon={faCheck} /></span>
-              </div>)
-            }</span>
+                  <div>
+                    {history.indexOf(home) + ". "}{home.key + '-' + history.indexOf(home) + " : " + home.value}
+
+                  </div>
+                  <span style={{
+                    color: "green",
+                    cursor: "pointer",
+                    marginRight: "10px",
+                  }} onClick={() => indivClick(home.key.split("-")[0] + '-' + history.indexOf(home), home.value)}><FontAwesomeIcon icon={faCheck} /></span>
+                </div>)
+              }</span>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
