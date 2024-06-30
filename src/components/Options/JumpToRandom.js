@@ -27,9 +27,8 @@ const JumpToRandom = (value) => {
               <input
                 id='gotoXRandom'
                 type="text"
-                style={{ marginRight: "5px" }}
                 placeholder="Enter X"
-                className={`p-1 rounded-md w-full text-xs border-none ${value.value}`}
+                className={`p-1 rounded-md mr-2 w-full text-xs border-none ${value.value}`}
                 value={stepsX}
                 disabled
               />
